@@ -1,0 +1,6 @@
+<select (change)="itemSelecionado(item.value)" #item>
+	<option *ngFor="let l of listaSelect"
+		[value]="l.id">
+			{{l.name}}
+		</option>
+</select>

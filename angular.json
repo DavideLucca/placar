@@ -23,9 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+			  "src/styles.css",
+			  "src/assets/css/flexboxgrid.min.css"
             ],
-            "scripts": []
+            "scripts": [
+				
+			]
           },
           "configurations": {
             "production": {

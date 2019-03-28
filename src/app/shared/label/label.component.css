@@ -1,0 +1,17 @@
+.partida {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.times-partida {
+	font-size: 18px;
+	font-style: italic;
+}
+
+.gols {
+	font-size: 40px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}

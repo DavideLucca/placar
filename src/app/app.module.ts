@@ -2,10 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { BotaoComponent } from './shared/botao/botao.component';
+import { LabelComponent } from './shared/label/label.component';
+import { SelectComponent } from './shared/select/select.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BotaoComponent,
+    LabelComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule
