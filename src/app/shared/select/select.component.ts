@@ -11,6 +11,7 @@ export class SelectComponent implements OnInit {
 	@Input() propertyValue
 	@Input() propertyText
 	@Input() nomeMulti = ''
+	@Input() identificador
 	@Output() itemSelected = new EventEmitter
 	listaSelect = []
 
@@ -31,6 +32,7 @@ export class SelectComponent implements OnInit {
 
 	itemSelecionado(id) {
 		const item = this.listaSelect.find(item => item.id == id)		
+		item.identificador = this.identificador
 		this.itemSelected.emit(item)
 	}
 

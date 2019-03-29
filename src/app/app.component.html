@@ -11,29 +11,36 @@
 		<div class="col-md-5">
 			<app-label [texto]="'Time casa'"></app-label>
 			<br>
-			<app-select [lista]="times"
+			<app-select
+				[identificador]="'casa'"
+				[lista]="times"
 				[propertyValue]="'id'"
 				[propertyText]="'time'"
 				[nomeMulti]="'uf'"
-				(itemSelected)="itemSelecionado($event)"></app-select>
+				(itemSelected)="itemSelecionado($event)">
+		</app-select>
 		</div>
 
 		<div class="col-md-2">
-			<button>Start</button>
+			<button (click)="startPartida()" 
+				[disabled]="timeCasa == '' || timeVisitante == ''">Start</button>
 		</div>
 
 		<div class="col-md-5">
 			<app-label [texto]="'Time Visitante'"></app-label>
 			<br>
-			<app-select [lista]="categorias"
-				[propertyValue]="'identificador'"
-				[propertyText]="'nome'"
-				[nomeMulti]="''"
-				(itemSelected)="itemSelecionado($event)"></app-select>
+			<app-select 
+				[identificador]="'visitante'"
+				[lista]="times"
+				[propertyValue]="'id'"
+				[propertyText]="'time'"
+				[nomeMulti]="'uf'"
+				(itemSelected)="itemSelecionado($event)">
+			</app-select>
 		</div>
 	</div>
 
-	<div class="row center-xs" *ngIf="teste">
+	<div class="row center-xs" *ngIf="start">
 		<div class="col-md-4">
 			<app-botao [texto]="'Marcar Gol Casa'"
 				[time]="'casa'"
@@ -45,17 +52,19 @@
 			<app-label [texto]="'Partida'" 
 				[classeCss]="'partida'"></app-label>
 			<br/>			
-			<app-label [texto]="'São Paulo X Santos'" 
+			<app-label [texto]="timesPartida" 
 				[classeCss]="'times-partida'"></app-label>
 			<br/>
-			<app-botao [texto]="'Reset'"
+			<app-botao 
+				[texto]="'Reset'"
 				[time]=""
 				(atualizarPlacar)="atualizarPlacarTimes($event)">
 			</app-botao>			
 		</div>
 
 		<div class="col-md-4">
-			<app-botao [texto]="'Marcar Gol Visitante'"
+			<app-botao 
+				[texto]="'Marcar Gol Visitante'"
 				[time]="'visitante'"
 				(atualizarPlacar)="atualizarPlacarTimes($event)">
 			</app-botao>										
@@ -64,9 +73,9 @@
 
 	<br/><br/><br/>
 
-	<div class="row center-xs">
+	<div class="row center-xs" *ngIf="start">
 		<div class="col-md-4">
-			<app-label [texto]="'Time casa'"></app-label>			
+			<app-label [texto]="timeCasa"></app-label>			
 			<br/><br/>
 			<app-label [classeCss]="'gols'"
 				[texto]="golsCasa"></app-label>					
@@ -79,11 +88,26 @@
 		</div>
 		
 		<div class="col-md-4">
-			<app-label [texto]="'Time Visitante'"></app-label>					
+			<app-label [texto]="timeVisitante"></app-label>					
 			<br/><br/>
 			<app-label [classeCss]="'gols'" 
 				[texto]="golsVisitante"></app-label>								
 		</div>		
+	</div>
+
+	<div class="row center-xs" *ngIf="start" style="margin-top: 40px;">
+		<div class="col-md-12">
+			<button (click)="finalizarPartida()">Finalizar Partida</button>
+		</div>	
+	</div>
+
+	<div class="row center-xs" *ngIf="start" style="margin-top: 40px;">
+		<div class="col-md-12">
+			<app-table [headers]="headersTable"
+				[data]="dataTable"
+				[acoes]="acoesTable"
+				(executarAcao)="executarFn($event)"></app-table>
+		</div>	
 	</div>
 </div>
 

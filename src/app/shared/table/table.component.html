@@ -1,0 +1,15 @@
+<table style="border: 1px solid; width: 100%;">
+	<thead>
+		<tr>
+			<th *ngFor="let h of headers">{{h}}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let d of data">
+			<td *ngFor="let key of d | table">{{ d[key] }}</td>
+			<td *ngIf="acoes.length > 0">
+				<a href="#" *ngFor="let a of acoes" (click)="executarFn(a, d)">{{a}}</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
